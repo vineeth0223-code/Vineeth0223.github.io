@@ -94,7 +94,14 @@ nav ul li a:hover::after {
   opacity: 0.8;
 }
 
-.hero button {
+.hero .buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero button, .hero .share-btn {
   padding: 15px 30px;
   background: linear-gradient(90deg, #00eaff, #ff4ecd);
   border: none;
@@ -106,9 +113,8 @@ nav ul li a:hover::after {
   transition: 0.4s;
 }
 
-.hero button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px #ff4ecd;
+.hero button:hover, .hero .share-btn:hover {
+  transform: scale(1.05);
 }
 
 /* SECTIONS */
@@ -238,6 +244,7 @@ footer {
     flex-direction: column;
     text-align: center;
   }
+  .hero h2 { font-size: 34px; }
 }
 </style>
 </head>
@@ -245,13 +252,15 @@ footer {
 <body>
 
 <nav>
-  <h1>MyPortfolio</h1>
+  <h1><a href="#home" style="color:inherit; text-decoration:none;">MyPortfolio</a></h1>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
+    <!-- Shareable public link to the live GitHub Pages site -->
+    <li><a href="https://vineeth0223-code.github.io/vineeth-portfolio.html" target="_blank" rel="noopener noreferrer">Live</a></li>
   </ul>
 </nav>
 
@@ -259,14 +268,17 @@ footer {
   <div>
     <h2>Hello, I'm Vineeth 👋</h2>
     <p>Web Developer | UI Designer | Creative Thinker</p>
-    <button>Explore My Work</button>
+    <div class="buttons">
+      <a href="#projects"><button>Explore My Work</button></a>
+      <button class="share-btn" id="shareBtn" aria-label="Share portfolio">Share</button>
+    </div>
   </div>
 </section>
 
 <section id="about">
   <h2 class="section-title">About Me</h2>
   <div class="about">
-    <img src="https://via.placeholder.com/300" alt="">
+    <img src="https://via.placeholder.com/300" alt="Vineeth avatar">
     <p>
       Enthusiastic and detail-oriented Software Developer skilled in HTML, CSS, JavaScript, React.js, MySQL, and Oracle. Adept at developing responsive web applications,
       integrating APIs, and delivering efficient solutions. Passionate about learning emerging
@@ -303,6 +315,7 @@ footer {
     <div class="skill-card">
       Java
       <div class="progress"><span data-width="65%"></span></div>
+    </div>
   </div>
 </section>
 
@@ -356,7 +369,7 @@ footer {
       <input type="hidden" name="_subject" value="New Portfolio Contact!">
 
       <!-- Redirect after submit -->
-      <input type="hidden" name="_next" value="https://yourusername.github.io/thankyou.html">
+      <input type="hidden" name="_next" value="https://vineeth0223-code.github.io/thankyou.html">
 
       <button type="submit">Send Message</button>
 
@@ -366,10 +379,29 @@ footer {
 
 
 <footer>
-  © 2025 Vineeth | Designed with ❤️
+  <p>© 2025 Vineeth | Designed with ❤️</p>
+  <p><a href="https://vineeth0223-code.github.io/vineeth-portfolio.html" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Open live site</a></p>
 </footer>
 
 <script>
+// Share link (copies the public GitHub Pages URL to clipboard)
+const SHARE_URL = 'https://vineeth0223-code.github.io/vineeth-portfolio.html';
+const shareBtn = document.getElementById('shareBtn');
+if(shareBtn){
+  shareBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(SHARE_URL);
+      // small non-blocking notification
+      const prev = shareBtn.textContent;
+      shareBtn.textContent = 'Copied!';
+      setTimeout(() => shareBtn.textContent = prev, 2000);
+    } catch (err) {
+      // fallback for older browsers
+      window.prompt('Copy this link', SHARE_URL);
+    }
+  });
+}
+
 // Skill animation
 const spans = document.querySelectorAll('.progress span');
 window.addEventListener('scroll', () => {
