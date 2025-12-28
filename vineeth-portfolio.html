@@ -33,12 +33,14 @@ nav {
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 1000;
 }
 
-nav h1 {
+nav h1 a {
   font-size: 24px;
   color: #00eaff;
+  text-decoration: none;
 }
 
 nav ul {
@@ -54,22 +56,10 @@ nav ul li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
-  position: relative;
 }
 
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #00eaff;
-  bottom: -5px;
-  left: 0;
-  transition: 0.4s;
-}
-
-nav ul li a:hover::after {
-  width: 100%;
+nav ul li a:hover {
+  color: #00eaff;
 }
 
 /* HERO */
@@ -89,32 +79,17 @@ nav ul li a:hover::after {
 }
 
 .hero p {
-  font-size: 18px;
   margin: 20px 0;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-.hero .buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero button, .hero .share-btn {
+.hero a {
+  display: inline-block;
   padding: 15px 30px;
-  background: linear-gradient(90deg, #00eaff, #ff4ecd);
-  border: none;
   border-radius: 30px;
-  font-size: 16px;
-  cursor: pointer;
+  background: linear-gradient(90deg, #00eaff, #ff4ecd);
   color: white;
-  box-shadow: 0 0 20px #00eaff;
-  transition: 0.4s;
-}
-
-.hero button:hover, .hero .share-btn:hover {
-  transform: scale(1.05);
+  text-decoration: none;
 }
 
 /* SECTIONS */
@@ -138,12 +113,6 @@ section {
 .about img {
   width: 300px;
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,234,255,0.5);
-}
-
-.about p {
-  font-size: 17px;
-  opacity: 0.85;
 }
 
 /* SKILLS */
@@ -157,28 +126,20 @@ section {
   background: rgba(255,255,255,0.1);
   padding: 30px;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  transition: 0.4s;
-}
-
-.skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px #00eaff;
 }
 
 .progress {
   height: 8px;
   background: rgba(255,255,255,0.2);
-  border-radius: 10px;
   margin-top: 10px;
-  overflow: hidden;
+  border-radius: 10px;
 }
 
 .progress span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #00eaff, #ff4ecd);
   width: 0;
+  background: linear-gradient(90deg, #00eaff, #ff4ecd);
 }
 
 /* PROJECTS */
@@ -192,17 +153,11 @@ section {
   padding: 25px;
   background: rgba(0,0,0,0.4);
   border-radius: 20px;
-  transition: 0.4s;
 }
 
-.project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px #ff4ecd;
-}
-
-.project-card i {
-  font-size: 40px;
+.project-card a {
   color: #00eaff;
+  text-decoration: none;
 }
 
 /* CONTACT */
@@ -210,21 +165,21 @@ section {
   text-align: center;
 }
 
-.contact input, .contact textarea {
+.contact input,
+.contact textarea {
   width: 80%;
   padding: 15px;
   margin: 10px 0;
   border-radius: 10px;
   border: none;
-  outline: none;
 }
 
 .contact button {
   padding: 15px 40px;
+  border-radius: 30px;
   border: none;
   background: linear-gradient(90deg, #00eaff, #ff4ecd);
-  border-radius: 30px;
-  font-size: 16px;
+  color: white;
   cursor: pointer;
 }
 
@@ -244,7 +199,6 @@ footer {
     flex-direction: column;
     text-align: center;
   }
-  .hero h2 { font-size: 34px; }
 }
 </style>
 </head>
@@ -252,39 +206,34 @@ footer {
 <body>
 
 <nav>
-  <h1><a href="#home" style="color:inherit; text-decoration:none;">MyPortfolio</a></h1>
+  <h1>
+    <a href="#home">MyPortfolio</a>
+  </h1>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
-    <!-- Shareable public link to the live GitHub Pages site -->
-    <li><a href="https://vineeth0223-code.github.io/vineeth-portfolio.html" target="_blank" rel="noopener noreferrer">Live</a></li>
+    <li><a href="https://github.com/vineeth0223-code" target="_blank">GitHub</a></li>
   </ul>
 </nav>
 
 <section class="hero" id="home">
   <div>
     <h2>Hello, I'm Vineeth 👋</h2>
-    <p>Web Developer | UI Designer | Creative Thinker</p>
-    <div class="buttons">
-      <a href="#projects"><button>Explore My Work</button></a>
-      <button class="share-btn" id="shareBtn" aria-label="Share portfolio">Share</button>
-    </div>
+    <p>Software Developer | UI Designer | Creative Thinker</p>
+    <a href="#projects">Explore My Work</a>
   </div>
 </section>
 
 <section id="about">
   <h2 class="section-title">About Me</h2>
   <div class="about">
-    <img src="https://via.placeholder.com/300" alt="Vineeth avatar">
+    <img src="https://via.placeholder.com/300" alt="Profile image">
     <p>
-      Enthusiastic and detail-oriented Software Developer skilled in HTML, CSS, JavaScript, React.js, MySQL, and Oracle. Adept at developing responsive web applications,
-      integrating APIs, and delivering efficient solutions. Passionate about learning emerging
-      technologies and contributing to innovative projects
-
-
+      Enthusiastic Software Developer skilled in HTML, CSS, JavaScript, React.js,
+      MySQL, and Java. Passionate about building responsive web applications.
     </p>
   </div>
 </section>
@@ -292,30 +241,10 @@ footer {
 <section id="skills">
   <h2 class="section-title">My Skills</h2>
   <div class="skills">
-    <div class="skill-card">
-      HTML
-      <div class="progress"><span data-width="90%"></span></div>
-    </div>
-    <div class="skill-card">
-      CSS
-      <div class="progress"><span data-width="85%"></span></div>
-    </div>
-    <div class="skill-card">
-      JavaScript
-      <div class="progress"><span data-width="80%"></span></div>
-    </div>
-    <div class="skill-card">
-      React.js
-      <div class="progress"><span data-width="75%"></span></div>
-    </div>
-    <div class="skill-card">
-      MySQL
-      <div class="progress"><span data-width="70%"></span></div>
-    </div>
-    <div class="skill-card">
-      Java
-      <div class="progress"><span data-width="65%"></span></div>
-    </div>
+    <div class="skill-card">HTML<div class="progress"><span data-width="90%"></span></div></div>
+    <div class="skill-card">CSS<div class="progress"><span data-width="85%"></span></div></div>
+    <div class="skill-card">JavaScript<div class="progress"><span data-width="80%"></span></div></div>
+    <div class="skill-card">React<div class="progress"><span data-width="75%"></span></div></div>
   </div>
 </section>
 
@@ -323,96 +252,46 @@ footer {
   <h2 class="section-title">Projects</h2>
   <div class="projects">
     <div class="project-card">
-      <i class="fas fa-code"></i>
       <h3>Portfolio Website</h3>
-      <p>Modern responsive portfolio design</p>
-    </div>
-    <div class="project-card">
-      <i class="fas fa-robot"></i>
-      <h3>AI Interface</h3>
-      <p>Animated AI based UI design</p>
+      <p>
+        <a href="https://vineeth0223-code.github.io/portfolio/" target="_blank">
+          View Live Website
+        </a>
+      </p>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <h2 class="section-title">Contact Me</h2>
-
   <div class="contact">
-    <form 
-      action="https://formsubmit.co/vineeth0223@gmail.com" 
-      method="POST">
+    <form action="https://formsubmit.co/vineeth0223@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Message" required></textarea>
 
-      <!-- Required -->
-      <input 
-        type="text" 
-        name="name" 
-        placeholder="Your Name" 
-        required>
-
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Your Email" 
-        required>
-
-      <textarea 
-        name="message" 
-        rows="5" 
-        placeholder="Message" 
-        required></textarea>
-
-      <!-- Anti spam -->
       <input type="hidden" name="_captcha" value="false">
-
-      <!-- Optional subject -->
-      <input type="hidden" name="_subject" value="New Portfolio Contact!">
-
-      <!-- Redirect after submit -->
-      <input type="hidden" name="_next" value="https://vineeth0223-code.github.io/thankyou.html">
+      <input type="hidden" name="_next" value="https://vineeth0223-code.github.io/portfolio/">
 
       <button type="submit">Send Message</button>
-
     </form>
   </div>
 </section>
 
-
 <footer>
-  <p>© 2025 Vineeth | Designed with ❤️</p>
-  <p><a href="https://vineeth0223-code.github.io/vineeth-portfolio.html" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Open live site</a></p>
+  © 2025 Vineeth | Designed with ❤️
 </footer>
 
 <script>
-// Share link (copies the public GitHub Pages URL to clipboard)
-const SHARE_URL = 'https://vineeth0223-code.github.io/vineeth-portfolio.html';
-const shareBtn = document.getElementById('shareBtn');
-if(shareBtn){
-  shareBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(SHARE_URL);
-      // small non-blocking notification
-      const prev = shareBtn.textContent;
-      shareBtn.textContent = 'Copied!';
-      setTimeout(() => shareBtn.textContent = prev, 2000);
-    } catch (err) {
-      // fallback for older browsers
-      window.prompt('Copy this link', SHARE_URL);
-    }
-  });
-}
-
-// Skill animation
 const spans = document.querySelectorAll('.progress span');
 window.addEventListener('scroll', () => {
   spans.forEach(span => {
-    const pos = span.getBoundingClientRect().top;
-    if(pos < window.innerHeight) {
+    if (span.getBoundingClientRect().top < window.innerHeight) {
       span.style.width = span.dataset.width;
     }
   });
 });
-
 </script>
+
 </body>
 </html>
